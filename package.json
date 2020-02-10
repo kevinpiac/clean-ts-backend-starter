@@ -36,7 +36,7 @@
     "reset": "git clean -dfx && git reset --hard && npm i",
     "clean": "trash build test",
     "prepare-release": "run-s reset test cov:check doc:html version doc:publish",
-    "dev": "nodemon build/main/index.js --exec \"node -r dotenv-safe/config\""
+    "dev": "nodemon build/main/Infrastructure/Applications/express/start.js --exec \"node -r dotenv-safe/config\""
   },
   "scripts-info": {
     "info": "Display information about the package scripts",
