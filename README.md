@@ -1,3 +1,1 @@
-# Instagram Microservice
-
-Microservice acting as an instagram backend layer.
+# Clean Backend TS Starter Kit
