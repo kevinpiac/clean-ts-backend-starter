@@ -1,0 +1,59 @@
+image: node:10.15.3
+pipelines:
+  default:
+    - step:
+        name: 'Installing dependencies'
+        caches:
+          - node
+        script:
+          - env
+          - npm install
+    - step:
+        name: Build
+        script:
+          - npm i
+          - npm run build
+    - step:
+        name: Unit testing
+        script:
+          - npm i
+          - npm run test:unit
+
+    - step:
+        name: Preparing artifacts
+        script:
+          - cp -R . /tmp/application-sources
+          - tar czfv application.tgz /tmp/application-sources
+          - ls -l /tmp
+        artifacts:
+          - application.tgz
+    - step:
+        name: Deploy to development
+        deployment: Development
+        script:
+          - pipe: atlassian/heroku-deploy:0.1.1
+            variables:
+              HEROKU_API_KEY: $HEROKU_API_KEY
+              HEROKU_APP_NAME: $HEROKU_APP_NAME
+              ZIP_FILE: "application.tgz"
+    - step:
+        name: E2e testing
+        script:
+          - npm i
+          - SERVER_BASE_URL=$DEV_SERVER_BASE_URL npm run test:e2e
+
+    - step:
+        name: Deploy to production
+        deployment: Production
+        trigger: manual
+        script:
+          - pipe: atlassian/heroku-deploy:0.1.1
+            variables:
+              HEROKU_API_KEY: $HEROKU_API_KEY
+              HEROKU_APP_NAME: $HEROKU_APP_NAME
+              ZIP_FILE: "application.tgz"
+    - step:
+        name: E2e testing production
+        script:
+          - npm i
+          - SERVER_BASE_URL=$PROD_SERVER_BASE_URL npm run test:e2e
