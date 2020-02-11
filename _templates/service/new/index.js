@@ -21,7 +21,7 @@ module.exports = {
       {
         type: 'input',
         name: 'name',
-        message: 'Choose a name for your service (eg: UserService)'
+        message: 'Choose a name for your service (do not append Service)'
       },
     ]).then(res => {
       return {

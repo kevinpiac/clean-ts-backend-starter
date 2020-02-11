@@ -1,5 +1,5 @@
 ---
-to: src/Business/<%= Domain %>/Entities/<%= Name %>/<%= Name %>Entity.ts/
+to: src/Business/<%= Domain %>/Entities/<%= Name %>Entity.ts/
 ---
 export class <%= Name %>Entity {
   constructor() {
