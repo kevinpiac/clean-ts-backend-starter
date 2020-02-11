@@ -1,9 +1,9 @@
 import { RegisterRequest } from "./RegisterRequest";
-import { UserEntity } from "src/Business/Entities/User/UserEntity";
+import { UserEntity } from "src/Business/UserManagement/Entities/User/UserEntity";
 import { RegisterResponse } from "./RegisterResponse";
 import { RegisterPresenter } from "./RegisterPresenter";
-import { UserService } from "src/Business/Services/UserService/UserService";
-import { EmailService } from "src/Business/Services/EmailService/EmailService";
+import { UserService } from "src/Business/UserManagement/Services/UserService/UserService";
+import { EmailService } from "src/Business/UserManagement/Services/EmailService/EmailService";
 
 export class Register {
     constructor(public userService: UserService, public emailService: EmailService) {}

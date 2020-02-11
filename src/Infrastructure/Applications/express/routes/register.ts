@@ -1,12 +1,12 @@
-import { InMemoryDummyUserService } from "src/Infrastructure/Databases/inMemoryDummy/InMemoryDummyUserService";
-import { DummyEmailService } from "src/Infrastructure/Vendors/dummyEmailService/dummyEmailService";
-import { Register } from "src/Business/Usecases/Register/Register";
-import { RegisterRequest } from "src/Business/Usecases/Register/RegisterRequest";
-import { UserEntity } from "src/Business/Entities/User/UserEntity";
+import { Register } from "src/Business/UserManagement/Usecases/Register/Register";
+import { RegisterRequest } from "src/Business/UserManagement/Usecases/Register/RegisterRequest";
+import { UserEntity } from "src/Business/UserManagement/Entities/User/UserEntity";
 import { RegisterPresenterJSON } from "../view/RegisterPresenterJSON";
+import { DummyEmailProviderAdapter } from "src/Infrastructure/Vendors/DummyEmailProvider/adapter/DummyEmailProviderAdapter";
+import { InMemoryDummyProviderAdapter } from "src/Infrastructure/Vendors/InMemoryDummyProvider/adapter/InMemoryDummyProviderAdapter";
 
-const userService = new InMemoryDummyUserService();
-const emailService = new DummyEmailService();
+const userService = new InMemoryDummyProviderAdapter();
+const emailService = new DummyEmailProviderAdapter();
 
 const registerUsecase = new Register(userService, emailService);
 
