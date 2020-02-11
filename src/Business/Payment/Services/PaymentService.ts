@@ -3,4 +3,5 @@ import { CreateCustomerRequest } from "../Usecases/CreateCustomer/CreateCustomer
 
 export interface PaymentService {
   createCustomerIfNotExist(request: CreateCustomerRequest): Promise<CustomerEntity>;
+  updateCustomerById(customerId: string, customer: CustomerEntity): Promise<CustomerEntity>;
 }

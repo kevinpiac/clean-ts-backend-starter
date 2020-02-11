@@ -5,10 +5,10 @@ import { <%= Name %>Request } from "./<%= Name %>Request";
 import { <%= Name %>Response } from "./<%= Name %>Response";
 import { <%= Name %>Presenter } from "./<%= Name %>Presenter";
 
-export class <%= Name %> {
+export class <%= Name %>Usecase {
     constructor(/* Use dependency injection there */) {}
 
-    async execute(<%= name %>Request: <%= Name %>Request, <%= name %>Presenter: <%= Name %>Presenter): Promise<any> {
+    async execute(request: <%= Name %>Request, presenter: <%= Name %>Presenter): Promise<any> {
 
       /* Example :
         const user: UserEntity = registerRequest.user;
@@ -19,6 +19,6 @@ export class <%= Name %> {
         const response = new RegisterResponse(user);
       */
       const response = "your_response_class";
-      return <%= name %>Presenter.present(response);
+      return presenter.present(response);
     }
 }
