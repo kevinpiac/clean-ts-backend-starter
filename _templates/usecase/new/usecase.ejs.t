@@ -18,7 +18,10 @@ export class <%= Name %>Usecase {
 
         const response = new RegisterResponse(user);
       */
-      const response = "your_response_class";
+      if (!request) {
+        console.log('OMG!');
+      }
+      const response = new <%= Name %>Response();
       return presenter.present(response);
     }
 }

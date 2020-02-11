@@ -18,7 +18,7 @@ describe('<%= Name %> Usecase', () => {
       const request = new <%= Name %>Request(); // Change This Part :)
       const usecase = new <%= Name %>Usecase();
       const res = await usecase.execute(request, presenter);
-      expect(res).toEqual('something.....');
+      expect(res).toEqual('Test only parts you want to work ;)');
     });
   });
 });
