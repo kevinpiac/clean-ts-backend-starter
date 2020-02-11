@@ -1,3 +1,5 @@
+import { CustomerEntity } from "../../Entities/CustomerEntity";
+
 export class CreateCustomerResponse {
-    constructor() {}
+    constructor(public customer: CustomerEntity) {}
 }

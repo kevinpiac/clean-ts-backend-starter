@@ -1,3 +1,3 @@
 export class CreateCustomerRequest {
-  constructor() {}
+  constructor(public email: string) {}
 }

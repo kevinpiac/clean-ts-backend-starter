@@ -1,21 +1,17 @@
 import { CreateCustomerRequest } from "./CreateCustomerRequest";
 import { CreateCustomerResponse } from "./CreateCustomerResponse";
 import { CreateCustomerPresenter } from "./CreateCustomerPresenter";
+import { PaymentService } from "../../Services/PaymentService";
+import { CustomerEntity } from "../../Entities/CustomerEntity";
 
 export class CreateCustomer {
-    constructor(/* Use dependency injection there */) {}
+    constructor(public paymentService: PaymentService) {}
 
     async execute(createCustomerRequest: CreateCustomerRequest, createCustomerPresenter: CreateCustomerPresenter): Promise<any> {
 
-      /* Example :
-        const user: UserEntity = registerRequest.user;
+      const customer: CustomerEntity = await this.paymentService.createCustomerIfNotExist(createCustomerRequest);
+      const response = new CreateCustomerResponse(customer);
 
-        this.userService.saveUser(user);
-        this.emailService.sendAnEmail(user.email);
-
-        const response = new RegisterResponse(user);
-      */
-      const response = "your_response_class";
       return createCustomerPresenter.present(response);
     }
 }
