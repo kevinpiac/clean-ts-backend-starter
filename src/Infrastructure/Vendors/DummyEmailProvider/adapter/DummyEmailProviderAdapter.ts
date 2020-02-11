@@ -1,4 +1,4 @@
-import { EmailService } from "src/Business/UserManagement/Services/EmailService/EmailService";
+import { EmailService } from "src/Business/User/Services/EmailService/EmailService";
 
 export class DummyEmailProviderAdapter implements EmailService {
   sendAnEmail(email: string): void {

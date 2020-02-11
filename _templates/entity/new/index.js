@@ -1,27 +1,24 @@
 const _ = require('lodash');
 
-// module.exports = {
-//   params: ({ args }) => {
-//     return {
-//       domain: args.domain,
-//       name: args.name,
-//       Domain: _.capitalize(args.domain),
-//     }
-//   }
-// }
-
 module.exports = {
-  prompt: ({ prompter, args }) => {
-    return prompter.prompt({
-      type: 'input',
-      name: 'domain',
-      message: 'Choose a domain name (eg: UserManagement or PaymentSystem)'
-    }).then(res => {
+  prompt: ({ inquirer, args }) => {
+    return inquirer.prompt([
+      {
+        type: 'input',
+        name: 'domain',
+        message: 'Choose a domain name (eg: User or PaymentSystem)'
+      },
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Choose a name for your entity (do not append Entity)'
+      },
+    ]).then(res => {
       return {
-        domain: res.domain,
+        domain: _.lowerFirst(res.domain),
         Domain: _.upperFirst(res.domain),
-        name: args.name,
-        Name: _.upperFirst(args.name),
+        name: _.lowerFirst(res.name),
+        Name: _.upperFirst(res.name),
       };
     })
   }

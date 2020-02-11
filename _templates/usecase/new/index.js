@@ -11,17 +11,24 @@ const _ = require('lodash');
 // }
 
 module.exports = {
-  prompt: ({ prompter, args }) => {
-    return prompter.prompt({
-      type: 'input',
-      name: 'domain',
-      message: 'Choose a domain name (eg: UserManagement or PaymentSystem)'
-    }).then(res => {
+  prompt: ({ inquirer, args }) => {
+    return inquirer.prompt([
+      {
+        type: 'input',
+        name: 'domain',
+        message: 'Choose a domain name (eg: User or PaymentSystem)'
+      },
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Choose a name for your usecase (eg: CreateCustomer)'
+      },
+    ]).then(res => {
       return {
-        domain: res.domain,
+        domain: _.lowerFirst(res.domain),
         Domain: _.upperFirst(res.domain),
-        name: args.name,
-        Name: _.upperFirst(args.name),
+        name: _.lowerFirst(res.name),
+        Name: _.upperFirst(res.name),
       };
     })
   }
