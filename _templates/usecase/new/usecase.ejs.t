@@ -1,5 +1,5 @@
 ---
-to: src/Business/Usecases/<%= Name %>/<%= Name %>Usecase.ts/
+to: src/Business/<%= Domain %>/Usecases/<%= Name %>/<%= Name %>Usecase.ts/
 ---
 import { <%= Name %>Request } from "./<%= Name %>Request";
 import { <%= Name %>Response } from "./<%= Name %>Response";
