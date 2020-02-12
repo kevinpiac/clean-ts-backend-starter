@@ -24,6 +24,7 @@
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:tslint": "tslint --fix --project .",
     "test": "jest",
+    "test:watch": "jest --watch",
     "test:unit": "npm run test 'unit'",
     "test:integration": "npm run test integration -- --runInBand",
     "test:e2e": "npm run test e2e -- --runInBand",
