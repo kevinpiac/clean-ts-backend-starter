@@ -2,7 +2,7 @@ import Guard from 'express-guard';
 
 const authenticated = new Guard.Role('authenticated', {
   can: [
-    'createNewTracker',
+    'doSomeAction',
   ],
   func: req => {
     return req.userId && req.userId.length && !req.userTokenError
